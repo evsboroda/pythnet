@@ -26,3 +26,10 @@
 """
 
 ip = "192.168.3.1"
+
+ip_split = ip.split(".")
+
+# "{:b}".format(int(ip_split[0]))
+# "{:b}".format(int(ip.split(".")[0]))
+
+out = "{:10} 
