@@ -24,30 +24,12 @@
 Это не значит, что задание сделано правильно, просто на данном этапе сложно иначе
 проверять результат.
 """
-
 ip = "192.168.3.1"
-# output = "\n{:10}" * 2
-#output = """
-#\n{:10} {:10} {:10} {:10}
-#\n{:10} {:10} {:10} {:10}
-#""""
 
-octet_a = ip.split(".")[0]
-octet_b = ip.split(".")[1]
-octet_c = ip.split(".")[2]
-octet_d = ip.split(".")[3]
+octets = ip.split(".")
 
-# "{:b}".format(int(ip_split[0]))
-# octet_a = "{:b}".format(int(ip.split(".")[0]))
-# octet_b = "{:b}".format(int(ip.split(".")[1]))
-# octet_c = "{:b}".format(int(ip.split(".")[2]))
-# octet_d = "{:b}".format(int(ip.split(".")[3]))
+output = """
+{0:<10}{1:<10}{2:<10}{3:<10}
+{0:08b}  {1:08b}  {2:08b}  {3:08b}"""
 
-#print(output.format(
-#       octet_a, octet_b, octet_c, octet_d,
-#       int(octet_a), int(octet_b), int(octet_c), int(octet_d),
-#))
-
-print("{0:10}{1:10}{2:10}{3}".format(octet_a, octet_b, octet_c, octet_d),
-      "\n{:08b}  {:08b}  {:08b}  {:08b}".format(int(octet_a), int(octet_b), int(octet_c), int(octet_d)))
- 
+print(output.format(int(octets[0]), int(octets[1]), int(octets[2]), int(octets[3])))
