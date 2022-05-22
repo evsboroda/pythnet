@@ -49,3 +49,73 @@ bin_ip = "00001010000000010000000111000011"
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 
 """
+
+
+address = input('Введите IP-сеть в формате IP/Mask: ')
+
+# ip = address.split("/")[0] # можно заменить ip, mask = network.split("/")
+# mask = address.split("/")[1] # можно заменить ip, mask = network.split("/")
+ip, mask = address.split("/")
+ip_list = ip.split(".")
+mask = int(mask)
+
+
+# octet_a = int(ip.split(".")[0])
+# octet_b = int(ip.split(".")[1])
+# octet_c = int(ip.split(".")[2])
+# octet_d = int(ip.split(".")[3])
+
+oct1, oct2, oct3, oct4 = [
+    int(ip_list[0]),
+    int(ip_list[1]),
+    int(ip_list[2]),
+    int(ip_list[3])
+]
+
+ip_bin = "{0:08b}{1:08b}{2:08b}{3:08b}".format(oct1, oct2, oct3, oct4)
+net_bin = ip_bin[:mask] + "0"* (32 - mask)
+
+net1, net2, net3, net4 = [
+    int(net_bin[0:8], 2),
+    int(net_bin[8:16], 2),
+    int(net_bin[16:24], 2),
+    int(net_bin[24:32], 2)
+]
+
+# mask_a = int(mask_bin[0:8], 2)
+# mask_b = int(mask_bin[8:16], 2)
+# mask_c = int(mask_bin[16:24], 2)
+# mask_d = int(mask_bin[24:32], 2)
+
+mask_bin = "1" * mask + "0" * (32 - mask)
+
+mask1, mask2, mask3, mask4 = [
+    int(mask_bin[0:8], 2),
+    int(mask_bin[8:16], 2),
+    int(mask_bin[16:24], 2),
+    int(mask_bin[24:32], 2),
+]
+
+ip_template = ['Network:',
+               '{0:<10}{1:<10}{2:<10}{3:<10}',
+               '{0:08b}  {1:08b}  {2:08b}  {3:08b}']
+
+mask_template = ['\nMask:',
+                 '/' + str(mask),
+                 '{0:<10}{1:<10}{2:<10}{3:<10}',
+                 '{0:08b}  {1:08b}  {2:08b}  {3:08b}']
+
+
+# ip_b = "\n{:08b}  {:08b}  {:08b}  {:08b}"
+
+# mask_bin = "1" * int(mask) + "0" * (32 - int(mask))
+
+# mask_template = '''
+# Mask:
+
+# '''
+
+print('\n'.join(ip_template).format(net1, net2, net3, net4))
+print('\n'.join(mask_template).format(mask1, mask2, mask3, mask4))
+# ip_b.format(int(octet_a), int(octet_b), int(octet_c), int(octet_d))) 
+

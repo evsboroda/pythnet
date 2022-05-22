@@ -66,12 +66,18 @@ trunk_template = [
 
 
 
-template = {"access": access_template, "trunk": trunk_template}
+# interface = input("Введите тип и номер интерфейса: ")
+# vlan = input("Введите номер влан(ов): ")
 
-mode = input("Введите режим работы интерфейса (access/trunk): ")
+mode = {
+    'access': { 'acc' : '\n'.join(access_template)},
+    'trunk': { 'tr' : '\n'.join(trunk_template)}
+}
+
+switchport = input("Введите режим работы интерфейса (access/trunk): ")
 interface = input("Введите тип и номер интерфейса: ")
-vlans = input("Введите номер влан(ов): ")
+vlan = input("Введите номер влан(ов): ")
+port = ''.join(mode[switchport].values())
 
-print(template)
-print(f"interface {interface}")
-print("\n".join(template[mode]).format(vlans))
+print('interface:', interface)
+print(port.format(vlan))

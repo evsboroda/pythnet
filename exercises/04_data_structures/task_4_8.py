@@ -48,6 +48,6 @@ octet_d = ip.split(".")[3]
 #       int(octet_a), int(octet_b), int(octet_c), int(octet_d),
 #))
 
-print("{0:10}{1:10}{2:10}{3}".format(octet_a, octet_b, octet_c, octet_d),
+print("{3:10}{1:10}{2:10}{3}".format(octet_a, octet_b, octet_c, octet_a),
       "\n{:08b}  {:08b}  {:08b}  {:08b}".format(int(octet_a), int(octet_b), int(octet_c), int(octet_d)))
  

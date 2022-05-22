@@ -19,6 +19,9 @@ $ python task_5_1a.py
 решить без использования условия if.
 """
 
+device = input('Введите имя устройства: ')
+option = input('Введите имя параметра: ')
+
 london_co = {
     "r1": {
         "location": "21 New Globe Walk",
@@ -44,3 +47,5 @@ london_co = {
         "routing": True,
     },
 }
+
+print(london_co[device][option])

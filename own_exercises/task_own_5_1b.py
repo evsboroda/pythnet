@@ -52,6 +52,6 @@ london_co = {
 }
 
 device = input('Введите имя устройства: ')
-options = str(', '.join(list(london_co[device].keys())))
-option = input('ведите имя параметра '+ '(' + options + ')' + ': ')
+options = ', '.join(london_co[device].keys())
+option = input(f'ведите имя параметра ({options})')
 print(london_co[device][option])

@@ -33,30 +33,19 @@ Out[1]: '11111111111111111111111111110000'
 
 address = input('Введите IP-сеть в формате IP/Mask: ')
 
-ip = address.split("/")[0] # можно заменить ip, mask = network.split("/")
-mask = address.split("/")[1] # можно заменить ip, mask = network.split("/")
-mask_bin = "1" * int(mask) + "0" * (32 - int(mask))
+ip = address.split("/")[0]
+mask = address.split("/")[1]
 
 octet_a = int(ip.split(".")[0])
 octet_b = int(ip.split(".")[1])
 octet_c = int(ip.split(".")[2])
 octet_d = int(ip.split(".")[3])
 
-mask_a = int(mask_bin[0:8], 2)
-mask_b = int(mask_bin[8:16], 2)
-mask_c = int(mask_bin[16:24], 2)
-mask_d = int(mask_bin[24:32], 2)
-
-ip_template = ['Network:',
-               '{0:<10}{1:<10}{2:<10}{3:<10}',
-               '{0:08b}  {1:08b}  {2:08b}  {3:08b}']
-
-mask_template = ['\nMask:',
-                 '/' + mask,
-                 '{0:<10}{1:<10}{2:<10}{3:<10}',
-                 '{0:08b}  {1:08b}  {2:08b}  {3:08b}']
-
-
+ip_x = '''
+Network:
+{0:<10}{1:<10}{2:<10}{3:<10}
+{0:08b}  {1:08b}  {2:08b}  {3:08b}
+'''
 # ip_b = "\n{:08b}  {:08b}  {:08b}  {:08b}"
 
 # mask_bin = "1" * int(mask) + "0" * (32 - int(mask))
@@ -66,6 +55,7 @@ mask_template = ['\nMask:',
 
 # '''
 
-print('\n'.join(ip_template).format(octet_a, octet_b, octet_c, octet_d))
-print('\n'.join(mask_template).format(mask_a, mask_b, mask_c, mask_d))
-# ip_b.format(int(octet_a), int(octet_b), int(octet_c), int(octet_d))) 
+print(ip_x.format(octet_a, octet_b, octet_c, octet_d),
+      "\nMask:\n",
+        mask)
+      # ip_b.format(int(octet_a), int(octet_b), int(octet_c), int(octet_d))) 

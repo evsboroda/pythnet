@@ -33,8 +33,8 @@ Out[1]: '11111111111111111111111111110000'
 
 address = input('Введите IP-сеть в формате IP/Mask: ')
 
-ip = address.split("/")[0] # можно заменить ip, mask = network.split("/")
-mask = address.split("/")[1] # можно заменить ip, mask = network.split("/")
+ip = address.split("/")[0]
+mask = address.split("/")[1]
 mask_bin = "1" * int(mask) + "0" * (32 - int(mask))
 
 octet_a = int(ip.split(".")[0])
